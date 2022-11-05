@@ -32,7 +32,7 @@ def get_proc_avg_for_assignment(assignment,access_set, student_set):
             if (a[-1] == s):
                 accesed_by_this_student.append(a[2])
         
-        s_proc = get_proc_index_for_stu(assignment, s, accesed_by_this_student)
+        s_proc = get_proc_index_for_stu(assignment, accesed_by_this_student)
         total_proc += s_proc
         student_procs_for_for_assignment = assignment_procs.get(assignment)
         student_procs_for_for_assignment({s: s_proc}) 
@@ -41,7 +41,8 @@ def get_proc_avg_for_assignment(assignment,access_set, student_set):
     
 #helper for get_proc_avg_for_assignment
 def is_assignment(activity):
-    return activity[-5] == "assignment" 
+    return activity[-6] == "assignment" 
+
 
 # gets the procrastination index for a specific student 
 # if student accessed prior to halfway between assignment open date and close date, return 0
