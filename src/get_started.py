@@ -9,7 +9,13 @@ enroll[enroll.type != 'StudentViewEnrollment']
 
 discuss = pd.read_csv('./data/additional/discussions.csv')
 discuss = discuss.loc[:, discuss.columns != "post_id"]
-plt.scatter(discuss.discussion_topic_message_length, discuss.post_message_length)
+number_of_message = discuss['discussion_topic_message_length'].value_counts()
+discuss['number_of_message'] = number_of_message
+plt.scatter(discuss.discussion_topic_message_length, discuss.number_of_message)
 plt.xlabel("Character length of the topic")
-plt.ylabel("Character length of the discussion post")
+plt.ylabel("The number of messages posted for a particular topic")
 plt.show()
+
+topics = pd.read_csv('./data/additional/discussion_topics.csv')
+topics[['id', 'title']]
+
