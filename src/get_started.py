@@ -19,3 +19,4 @@ plt.show()
 topics = pd.read_csv('./data/additional/discussion_topics.csv')
 topics[['id', 'title']]
 
+discuss.groupby(['discussion_topic_id'])
