@@ -10,4 +10,6 @@ enroll[enroll.type != 'StudentViewEnrollment']
 discuss = pd.read_csv('./data/additional/discussions.csv')
 discuss = discuss.loc[:, discuss.columns != "post_id"]
 plt.scatter(discuss.discussion_topic_message_length, discuss.post_message_length)
+plt.xlabel("Character length of the topic")
+plt.ylabel("Character length of the discussion post")
 plt.show()
