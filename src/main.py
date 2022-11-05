@@ -18,7 +18,7 @@ assignment = pd.read_csv('./data/additional/assignments.csv').drop({'unlock_at',
 assignment = assignment[assignment.published == True]
 assignment_id = assignment.loc[:, ['id']]
 
-get_proc_index(assignment_id, nagivation_event, student_id, 100)
+get_proc_index(list(assignment_id), list(nagivation_event), list(student_id), 100)
 
 discuss = pd.read_csv('./data/additional/discussions.csv')
 discuss_clean = discuss.groupby(['discussion_topic_title','discussion_topic_id' , 'discussion_topic_message_length']).agg({'discussion_topic_title' : 'size'}).rename(columns={'discussion_topic_title' : 'number_of_message'}).reset_index()
