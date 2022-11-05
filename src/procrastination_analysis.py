@@ -12,7 +12,7 @@ def get_proc_index(assignments, access_set, student_set, max):
     for a in assignments:
         total_avg_procs += get_proc_avg_for_assignment(a, access_set, student_set)
 
-
+    total_avg_procs = total_avg_procs/len(assignments)
     return total_avg_procs/max
 
 # gets average procrastination index for an assignment
@@ -23,7 +23,7 @@ def get_proc_avg_for_assignment(assignment,access_set, student_set):
     assignment_procs.update({assignment: {}}) 
 
     for access in assignment_access_set:
-        if (access[0] == assignment):
+        if (access[-3] == assignment):
             this_assignment_access_set.append(access)
 
     for s in student_set:
