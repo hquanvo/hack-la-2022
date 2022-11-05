@@ -28,7 +28,9 @@ def get_student_participation(student_target_participation, students, discussion
         for d in discussions:
             if s == d[0]:
                 participation_counter += 1
-            
+
+        if participation_counter >= student_target_participation:
+            participating_students.append(s)
         
 
     return 50 * (len(participating_students)/len(students))
