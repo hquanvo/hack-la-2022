@@ -8,15 +8,21 @@ enroll[['user_id', 'type', 'last_activity_at', 'total_activity_time']]
 enroll[enroll.type != 'StudentViewEnrollment']
 
 discuss = pd.read_csv('./data/additional/discussions.csv')
-discuss = discuss.loc[:, discuss.columns != "post_id"]
-number_of_message = discuss['discussion_topic_message_length'].value_counts()
-discuss['number_of_message'] = number_of_message
-plt.scatter(discuss.discussion_topic_message_length, discuss.number_of_message)
-plt.xlabel("Character length of the topic")
-plt.ylabel("The number of messages posted for a particular topic")
+discuss_clean = discuss.groupby(['discussion_topic_title','discussion_topic_id' , 'discussion_topic_message_length']).agg({'discussion_topic_title' : 'size'}).rename(columns={'discussion_topic_title' : 'number_of_message'}).reset_index()
+
+x_axis = discuss_clean.discussion_topic_message_length
+y_axis = discuss_clean.number_of_message
+xlabel = "Character length of the topic"
+ylabel = "The number of messages posted for a particular topic"
+
+# making a scatterplot
+discuss_clean
+plt.scatter(x_axis, y_axis)
+plt.xlabel(xlabel)
+plt.ylabel(ylabel)
 plt.show()
 
-topics = pd.read_csv('./data/additional/discussion_topics.csv')
-topics[['id', 'title']]
 
-discuss.groupby(['discussion_topic_id'])
+
+
+                 
